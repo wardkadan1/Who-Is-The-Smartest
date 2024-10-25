@@ -41,6 +41,75 @@ body{
     padding: 0%;
 }
 #timer{
-    width: 20%;
-    height: 100%; 
+    display: flex;
+    width: 100%;
+    height: 16%; 
+    background-color: aquamarine;
 }
+#categorySection{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 7%; 
+    background-color: rgb(215, 146, 57);
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+#categorySection p{
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #a09898;
+    width: 100%;
+    height: 100%; 
+    margin: 0%;
+    padding: 0%;
+}
+#ques{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 30%; 
+    background-color: rgb(143, 139, 133);
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+#ques p{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+#answers{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2%;
+    width: 100%;
+    height: 40%; 
+    background-color: rgb(215, 146, 57);
+    margin: 0%;
+    padding: 0%;
+}
+#answers p{
+    margin: 2%;
+    padding: 0%;
+background-color: antiquewhite;
+border-radius: 14px;
+}
+ /* #ans1{
+
+ }
+ #ans2{
+
+ }
+ #ans3{
+
+ }
+ #ans4{
+
+ } */
