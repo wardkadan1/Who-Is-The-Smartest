@@ -3,7 +3,49 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="Game-page.css" />
+    <script src="Game-script.js" defer></script>
+    <title>Game Page</title>
   </head>
-  <body></body>
+  <body>
+    <main class="container">
+      <section class="topBarBtns">
+        <button class="btn" id="exitBtn">Exit</button>
+        <button class="btn" id="restartBtn">Restart</button>
+      </section>
+
+      <section class="logo">
+        <img src="logo.png" alt="logo" id="logo" />
+      </section>
+
+      <section class="life">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="75"
+          height="69"
+          viewBox="0 0 75 69"
+          fill="none"
+        >
+          <g clip-path="url(#clip0_18_382)">
+            <path
+              d="M16.3228 0.186761C24.3682 -0.826656 31.9613 2.34313 37.506 8.08075C51.3583 -6.6138 76.4558 -0.647593 74.9357 21.9905C73.56 42.4646 53.7715 58.8545 37.791 68.9925C36.7003 69.2592 28.6588 63.251 27.2602 62.1728C14.0312 51.9701 -1.022 36.3612 0.0534958 18.1692C0.593146 9.05226 7.11836 1.34495 16.3228 0.186761Z"
+              fill="#FF9FB9"
+            />
+          </g>
+          <defs>
+            <clipPath id="clip0_18_382">
+              <rect width="75" height="69" fill="white" />
+            </clipPath>
+          </defs>
+        </svg>
+        <p class="numOfLives">3</p>
+      </section>
+    </main>
+  </body>
 </html>
