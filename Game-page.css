@@ -77,3 +77,32 @@ body {
   top: -65px;
   right: -27px;
 }
+
+.sideBarBtns {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  bottom: 167px;
+  right: 24px;
+  gap: 12px;
+}
+
+.circle {
+  width: 75px;
+  height: 75px;
+  border-radius: 50px;
+  background: #ff9fb9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s linear;
+}
+
+.circle:hover {
+  background: white;
+
+  path {
+    fill: #ff9fb9;
+  }
+}
