@@ -1,0 +1,108 @@
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 100%;
+  height: 100vh;
+  background: url(./wallpaper.png) no-repeat center;
+  background-size: cover;
+  position: relative;
+}
+
+.topBarBtns {
+  display: flex;
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  gap: 12px;
+}
+
+.btn {
+  width: 150px;
+  height: 75px;
+  border-radius: 50px;
+  border: none;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s linear;
+}
+
+#exitBtn {
+  color: white;
+  background: #ff9fb9;
+  box-shadow: 0px 5px 10px 0px rgba(253, 216, 227, 0.5);
+
+  &:hover {
+    color: black;
+    background: white;
+    box-shadow: 0px 5px 10px 0px rgba(253, 216, 227, 0.5);
+  }
+}
+
+#restartBtn {
+  background: white;
+  box-shadow: 0px 5px 10px 0px rgba(253, 216, 227, 0.5);
+
+  &:hover {
+    color: white;
+    background: #ff9fb9;
+    box-shadow: 0px 5px 10px 0px rgba(253, 216, 227, 0.5);
+  }
+}
+
+#logo {
+  width: 250px;
+  height: 250px;
+  display: block;
+  margin: auto;
+  padding-top: 50px;
+}
+
+.life {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+}
+
+.numOfLives {
+  color: #fff;
+  font-size: 32px;
+  font-weight: 700;
+  margin: 0;
+  position: relative;
+  top: -65px;
+  right: -27px;
+}
+
+.sideBarBtns {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  bottom: 167px;
+  right: 24px;
+  gap: 12px;
+}
+
+.circle {
+  width: 75px;
+  height: 75px;
+  border-radius: 50px;
+  background: #ff9fb9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s linear;
+}
+
+.circle:hover {
+  background: white;
+
+  path {
+    fill: #ff9fb9;
+  }
+}
