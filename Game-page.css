@@ -53,7 +53,61 @@ body {
       background: #ff9fb9;
       box-shadow: 0px 5px 10px 0px rgba(253, 216, 227, 0.5);
     }
-  }
+}
+
+#logo {
+  width: 250px;
+  height: 250px;
+  display: block;
+  margin: auto;
+  padding-top: 50px;
+}
+
+.life {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+}
+
+.numOfLives {
+  color: #fff;
+  font-size: 32px;
+  font-weight: 700;
+  margin: 0;
+  position: relative;
+  top: -65px;
+  right: -27px;
+  width: fit-content;
+}
+
+.sideBarBtns {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  bottom: 167px;
+  right: 24px;
+  gap: 12px;
+}
+
+.circle {
+  width: 75px;
+  height: 75px;
+  border-radius: 50px;
+  background: #ff9fb9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s linear;
+}
+
+.circle:hover {
+  background: white;
+
+  path {
+    fill: #ff9fb9;
+
+  }}
   
   #logo {
     width: 250px;
@@ -219,6 +273,7 @@ body {
     padding: 0%;
     box-sizing: border-box;
 }
-#ans1,#ans2,#ans3,#ans4{
+
+#ans1,#ans2,#ans3,#ans4 {
     text-align: center;
 }
