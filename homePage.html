@@ -15,7 +15,7 @@
     <!-- CSS -->
     <link rel="stylesheet" href="./css/home.css" />
     <!-- JavaScript -->
-    <script src="./js/home.js"></script>
+    <script src="./js/home.js" defer></script>
     <title>Who's The Smartest</title>
   </head>
 
@@ -23,11 +23,39 @@
     <main>
       <img src="images/logo.png" alt="logo" id="logo" />
       <section>
-        <a href="gamePage.html"
-          ><button class="btn">Start a New Game</button></a
-        >
+        <button class="btn" id="newGameBtn">Start a New Game</button>
         <button class="btn">Settings</button>
         <button id="infoBtn">Info</button>
+      </section>
+
+      <section id="infoSection">
+        <p class="infoContent">
+          <span class="xBtn">X</span>
+          Who’s The Smartest is an exciting, high-stakes cultural trivia game
+          where players test their knowledge of Jewish and Arab traditions,
+          history, and customs. The challenge consists of 10 questions, with
+          each correct answer bringing the player closer to the grand prize
+          being the smartest. Players start with 3 lives, and for every
+          incorrect answer, they lose one life. If all lives are lost, the game
+          is over. However, if they successfully answer all 10 questions without
+          losing all 3 lives, they win the ultimate reward.
+        </p>
+      </section>
+
+      <section id="newGame">
+        <section class="newGameContent">
+          <span class="xBtn">X</span>
+          <section class="input">
+            <label for="name">Please enter your full name:</label>
+            <input type="text" id="name" placeholder="John Doe" />
+            <p id="error"></p>
+          </section>
+
+          <section class="newGameBtns">
+            <button class="btn" id="newGameBtn1">Start</button>
+            <button class="btn" id="newGameBtn2">Go Back</button>
+          </section>
+        </section>
       </section>
     </main>
   </body>
