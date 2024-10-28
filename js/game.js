@@ -20,8 +20,8 @@ async function fetchQuestions() {
 async function startGame() {
     resetGame();
     await fetchQuestions();
-    loadQuestion(questions[currentQuestionIndex]);
     startTimers(); 
+    loadQuestion(questions[currentQuestionIndex]);
     document.getElementById("skip").onclick = skipQuestion;
 }
 
@@ -79,12 +79,12 @@ function skipQuestion() {
 
 // Move to the next question and reset timer
 function nextQuestion() {
-    clearInterval(questionInterval); 
+    clearInterval(questionInterval);
+    startTimers(); // Reset and start the timer immediately
     currentQuestionIndex++;
     if (currentQuestionIndex < maxQuestions && currentQuestionIndex < questions.length) {
         updateQuestionNumber();
         loadQuestion(questions[currentQuestionIndex]);
-        startTimers(); 
     } else {
         endGame(`Congratulations! You finished the game with a score of ${score}/${maxQuestions}.`);
     }
@@ -128,8 +128,9 @@ function resetGame() {
 
 // Start a fresh timer for each question
 function startTimers() {
-    questionTimer = 60; 
+    questionTimer = 60;
     const timerDisplay = document.getElementById("timer");
+    timerDisplay.innerText = questionTimer;
     questionInterval = setInterval(() => {
         if (questionTimer > 0) {
             questionTimer--;
