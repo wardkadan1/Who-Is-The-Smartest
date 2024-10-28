@@ -135,7 +135,6 @@ function applyFiftyHint(){
      // Check if the answer is incorrect and that we haven't deleted 2 already
      if(ans !== questions.rightAnswer && deleted < 2){
       answerElement.style.textDecoration = 'line-through';
-      // answerElement.classList.add('used-fifty');
       deleted++;
      }
     });
