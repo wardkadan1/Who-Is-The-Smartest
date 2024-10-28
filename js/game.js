@@ -68,7 +68,7 @@ function skipQuestion() {
         skipUsed = true;
         const skipBtn = document.getElementById("skip");
         skipBtn.style.backgroundColor = "grey";
-        skipBtn.style.cursor = "not-allowed";
+        skipBtn.style.pointerEvents = "none";
         clearInterval(questionInterval);
         displayMessage("Question skipped!", "You have gained 1 point.");
         setTimeout(() => {
