@@ -72,7 +72,6 @@ function displayMessage(title,message) {
   messageBox.innerText = message;
   const messageTitle=document.getElementById('messageTitle');
   messageTitle.innerHTML=title;
-
 }
 
 // Handle hint usage
