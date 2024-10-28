@@ -47,11 +47,11 @@ function handleAnswer(question, selectedAnswer) {
   
   if (isCorrect) {
     score++;
-    displayMessage("The right answer: ", question.explanation);
+    displayMessage("correct! ", question.explanation);
     nextQuestion();
   } else {
     lives--;
-    displayMessage('Incorrect answer: ', question.explanation);
+    displayMessage('Incorrect: ', question.explanation);
     
     // Update the displayed number of lives
     const livesDisplay = document.querySelector(".numOfLives");
