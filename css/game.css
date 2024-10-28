@@ -82,7 +82,7 @@ body {
   position: absolute;
   display: flex;
   flex-direction: column;
-  bottom: 180px;
+  bottom: 145px;
   right: 24px;
   gap: 12px;
 }
