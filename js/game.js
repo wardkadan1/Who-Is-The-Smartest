@@ -17,7 +17,6 @@ async function fetchQuestions() {
   console.log(questions);
 }
 
-
 // Initialize game
 async function startGame() {
   resetGame(); // Reset game state before starting
@@ -29,7 +28,8 @@ async function startGame() {
 
 // Load current question and display on UI
 function loadQuestion(item) {
-  document.getElementById("quesText").innerText = item.question;
+  document.getElementById("questionText").innerText = item.question;
+  
   // Shuffle and display answer options
   const shuffledAnswers = [...item.answers].sort(() => Math.random() - 0.5);
   
@@ -39,7 +39,6 @@ function loadQuestion(item) {
     answerBtn.onclick = () => handleAnswer(item, answer);
   });
 }
-
 
 // Handle answer selection
 function handleAnswer(question, selectedAnswer) {
@@ -68,7 +67,6 @@ function handleAnswer(question, selectedAnswer) {
     }
   }
 }
-
 
 // Move to the next question
 function nextQuestion() {
@@ -101,13 +99,12 @@ function nextQuestion() {
 
 // Display messages for correct/incorrect answers
 function displayMessage(title, message) {
-  const messageBox = document.getElementById("messageText"); // Get the <p> element
-  // messageBox.innerText = message; // Set the message text
-
   const messageTitle = document.getElementById('messageTitle'); // Get the <span> element for the title
-  messageTitle.innerHTML = title; // Set the title text
-}
+  // messageTitle.innerHTML = title; // Set the title text
 
+  const messageBox = document.getElementById("messageText"); // Get the <p> element
+  messageBox.innerText = `${title} ${message}`; // Set the message text
+}
 
 // Handle hint usage
 function useHint() {
@@ -137,7 +134,6 @@ function resetGame() {
 function startTimers() {
   let questionTimer = 60; // 1 minute per question
 
-
   // Question timer countdown
   const questionInterval = setInterval(() => {
     const timerDisplay = document.getElementById("timer");
@@ -161,7 +157,5 @@ function startTimers() {
     }
   }, 1000);
 }
-
-
 
 window.onload = startGame;
