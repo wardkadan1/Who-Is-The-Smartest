@@ -192,7 +192,7 @@ body {
   line-height: 120%;
 }
 
-#answers {
+#answersContainer {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 24px;
@@ -216,18 +216,18 @@ body {
   }
 }
 
-#hint {
+#message {
   width: 100%;
   color: black;
 }
 
-#hint #hintText {
+#message #messageText {
   font-size: 24px;
   margin: 0;
   padding: 0;
 }
 
-#hintText span {
+#messageText span {
   font-weight: bold;
 }
 

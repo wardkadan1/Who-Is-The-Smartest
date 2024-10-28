@@ -15,7 +15,7 @@
     <!-- CSS -->
     <link rel="stylesheet" href="./css/game.css" />
     <!-- JavaScript -->
-    <script src="gameScript.js"></script>
+    <script src="game.js" defer></script>
     <title>Who's The Smartest</title>
   </head>
 
@@ -189,23 +189,23 @@
         </section>
 
         <section id="ques">
-          <p id="quesText">
+          <p id="questionText">
             Which city is considered holy by both Jewish and Muslim people?
           </p>
         </section>
 
-        <section id="answers">
+        <section id="answersContainer">
           <p id="ans1">Jerusalem</p>
           <p id="ans2">Mecca</p>
           <p id="ans3">Tel Aviv</p>
           <p id="ans4">Nazareth</p>
         </section>
 
-        <section id="hint">
-          <p id="hintText">
-            <span>Hint: </span>
-            It has Al-Aqsa mosque
+        <section id="message">
+          <p id="messageText">
+            <span id="messageTitle"></span>
           </p>
+
         </section>
       </section>
     </main>
