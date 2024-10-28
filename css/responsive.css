@@ -1,0 +1,229 @@
+/* XL - Extra large devices (large desktops, 1200px and down)*/
+@media screen and (max-width: 1200px) {
+  /* Gampage Responsive */
+  .btn {
+    width: 100px;
+    height: 50px;
+    font-size: 20px;
+  }
+
+  .life,
+  .life svg {
+    width: 60px;
+    height: 55px;
+  }
+
+  .numOfLives {
+    font-size: 28px;
+    top: -54px;
+    right: -22px;
+  }
+
+  .circle {
+    width: 60px;
+    height: 60px;
+  }
+
+  .circle svg {
+    width: 50px;
+  }
+
+  #ques {
+    width: 80%;
+  }
+
+  #ques p {
+    font-size: 32px;
+  }
+
+  #answers {
+    width: 80%;
+  }
+
+  #answers p {
+    width: 100%;
+    font-size: 20px;
+  }
+
+  #categorySection #categoryText {
+    font-size: 20px;
+  }
+
+  #hint {
+    width: 80%;
+  }
+
+  #hint #hintText {
+    font-size: 20px;
+  }
+
+  #QuesNumSection {
+    width: 125px;
+    height: 25px;
+  }
+
+  #QuesNumSection p {
+    font-size: 20px;
+  }
+
+  #timerSection {
+    width: 60px;
+    height: 60px;
+  }
+
+  #timerSection #timer {
+    font-size: 32px;
+  }
+}
+
+/* LG - Large devices (desktops, 992px and down)*/
+@media screen and (max-width: 992px) {
+  /* Gampage Responsive */
+  #answers {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .sideBarBtns {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    bottom: 24px;
+    gap: 12px;
+    right: 0;
+    left: 0;
+    justify-content: center;
+  }
+
+  #logo {
+    padding-top: 24px;
+  }
+
+  #QuestContainer {
+    bottom: 175px;
+  }
+}
+
+/* MD - Medium devices (tablets, 768px and down)*/
+@media screen and (max-width: 768px) {
+  /* Homepage Responsive */
+  .infoContent {
+    width: 450px;
+  }
+
+  .newGameContent {
+    width: 450px;
+  }
+
+  /* Gampage Responsive */
+  .topBarBtns {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #ques p {
+    font-size: 28px;
+  }
+
+  #answers p {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  .btn {
+    width: 80px;
+    height: 40px;
+    font-size: 16px;
+  }
+
+  .life,
+  .life svg {
+    width: 60px;
+    height: 55px;
+  }
+
+  .numOfLives {
+    font-size: 28px;
+    top: -54px;
+    right: -22px;
+  }
+
+  #categorySection #categoryText {
+    font-size: 16px;
+  }
+
+  #hint #hintText {
+    font-size: 16px;
+  }
+
+  .numOfLives {
+    font-size: 24px;
+    top: -54px;
+    right: -22px;
+  }
+
+  #QuesNumSection {
+    width: 100px;
+    height: 25px;
+  }
+
+  #QuesNumSection p {
+    font-size: 16px;
+  }
+
+  #timerSection {
+    width: 50px;
+    height: 50px;
+  }
+
+  #timerSection #timer {
+    font-size: 28px;
+  }
+}
+
+/* SM - Small devices (landscape phones, 576px and down)*/
+@media screen and (max-width: 576px) {
+  /* Homepage Responsive */
+  #homePageLogo {
+    width: 90%;
+  }
+
+  button {
+    width: 100%;
+    width: calc(100% - 3rem);
+  }
+
+  section {
+    width: 100%;
+  }
+
+  .infoContent {
+    width: 250px;
+  }
+
+  .newGameContent {
+    width: 250px;
+  }
+
+  /* Gampage Responsive */
+  #ques p {
+    font-size: 24px;
+  }
+
+  .circle {
+    width: 50px;
+    height: 50px;
+  }
+
+  .circle svg {
+    width: 40px;
+  }
+
+  #logo {
+    width: 200px;
+    height: 200px;
+  }
+}
