@@ -227,3 +227,143 @@
     height: 200px;
   }
 }
+
+@media screen and (max-height: 1065px) {
+  #logo {
+    width: 150px;
+    height: 150px;
+  }
+
+  #answersContainer {
+    gap: 15px;
+  }
+
+  #answersContainer p {
+    height: 65px;
+    line-height: 65px;
+  }
+
+  #QuesNumSection {
+    width: 140px;
+    height: 32px;
+  }
+  #QuesNumSection p {
+    font-size: 23px;
+  }
+
+  #ques p {
+    font-size: 29px;
+  }
+
+  #categorySection #categoryText {
+    font-size: 20px;
+    margin-bottom: -10px;
+    margin-top: -10px;
+  }
+
+  #timerSection {
+    width: 55px;
+    height: 55px;
+    margin-bottom: -10px;
+    margin-top: -10px;
+  }
+
+  #timerSection #timer {
+    font-size: 29px;
+  }
+}
+
+@media screen and (max-height: 940px) {
+  #logo {
+    width: 125px;
+    height: 125px;
+  }
+  #answersContainer {
+    gap: 10px;
+  }
+  #answersContainer p {
+    height: 50px;
+    line-height: 50px;
+  }
+  #QuesNumSection {
+    width: 130px;
+    height: 27px;
+  }
+  #QuesNumSection p {
+    font-size: 19px;
+  }
+  #ques p {
+    font-size: 25px;
+  }
+
+  #timerSection {
+    width: 45px;
+    height: 45px;
+    margin-bottom: -12px;
+    margin-top: -12px;
+  }
+  #timerSection #timer {
+    font-size: 25px;
+  }
+}
+
+@media screen and (max-height: 845px) {
+  #logo {
+    width: 110px;
+    height: 110px;
+  }
+  #answersContainer {
+    gap: 7px;
+  }
+  #QuesNumSection {
+    width: 120px;
+    height: 25px;
+  }
+  #QuesNumSection p {
+    font-size: 17px;
+  }
+  #ques p {
+    font-size: 23px;
+  }
+  #timerSection {
+    width: 40px;
+    height: 40px;
+    margin-bottom: -15px;
+    margin-top: -15px;
+  }
+  #timerSection #timer {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-height: 790px) {
+  #logo {
+    width: 105px;
+    height: 105px;
+  }
+  #ques p {
+    font-size: 20px;
+  }
+  #QuesNumSection {
+    width: 100px;
+    height: 20px;
+  }
+  #QuesNumSection p {
+    font-size: 12px;
+  }
+  #timerSection {
+    width: 40px;
+    height: 40px;
+    margin-bottom: -15px;
+    margin-top: -15px;
+  }
+  #timerSection #timer {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-height: 745px) {
+  #logo {
+    display: none;
+  }
+}
