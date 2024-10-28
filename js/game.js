@@ -158,10 +158,7 @@ function startTimers() {
   }, 1000);
 }
 
-window.onload = startGame;
-<<<<<<< HEAD
+// window.onload = startGame;
 
 
 
-=======
->>>>>>> main
