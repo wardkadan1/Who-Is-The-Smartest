@@ -38,6 +38,12 @@ function loadQuestion(item) {
     answerBtn.innerText = answer;
     answerBtn.onclick = () => handleAnswer(item, answer);
   });
+
+  //removing strikeThrough case user used fiftyHint previous question
+  for (let i = 1; i <= item.answers.length; i++) {
+    const answerBtn = document.getElementById(`ans${i}`);
+    answerBtn.style.textDecoration = 'none'; 
+  }
 }
 
 // Handle answer selection
@@ -123,10 +129,10 @@ function useHint() {
 }
 
 //fiftyHint
-let deleted=0;
 let fiftyHintUsed=false;
 
 function applyFiftyHint(){
+let deleted=0;
   if (!fiftyHintUsed) {   
      questions[currentQuestionIndex].answers.forEach((ans,index) => {
       console.log(ans);
@@ -138,7 +144,7 @@ function applyFiftyHint(){
       deleted++;
      }
     });
-  fiftyHintUsed = true; // Mark the hint as used
+  fiftyHintUsed = true; 
 } else{
   displayMessage("You've already used this hint!");
 }
@@ -147,6 +153,7 @@ const fiftyFifty=document.getElementById('fiftyFifty');
 fiftyFifty.addEventListener('click',()=>{
   console.log( questions[currentQuestionIndex].answers);
   applyFiftyHint()  
+  // fiftyHintUsed = true; 
   fiftyFifty.classList.add('used-fifty-hint'); 
 })
 
@@ -163,7 +170,6 @@ function resetGame() {
   score = 0;
   currentQuestionIndex = 0;
   hintUsed = false;
-  deleted=0;
   fiftyHintUsed=false;
 }
 
