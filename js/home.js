@@ -18,11 +18,13 @@ xBtns.forEach((xBtn) => {
       infoSection.style.display = "none";
     } else if (newGame.style.display === "flex") {
       newGame.style.display = "none";
+      error.style.display = "none";
     }
   });
 });
 
 const newGameBtn1 = document.getElementById("newGameBtn1");
+const newGameBtn2 = document.getElementById("newGameBtn2");
 const input = document.getElementById("name");
 const error = document.getElementById("error");
 
@@ -35,4 +37,9 @@ newGameBtn1.addEventListener("click", () => {
     error.style.display = "none";
     window.location.href = "gamePage.html";
   }
+});
+
+newGameBtn2.addEventListener("click", () => {
+  newGame.style.display = "none";
+  error.style.display = "none";
 });
