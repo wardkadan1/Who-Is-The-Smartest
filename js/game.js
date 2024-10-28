@@ -106,6 +106,11 @@ function displayMessage(title, message) {
   messageBox.innerText = `${title} ${message}`; // Set the message text
 }
 
+//event click for hintBtn
+const hintBtn=document.getElementById('hintBtn');
+hintBtn.addEventListener('click',function(){
+  useHint();
+})
 // Handle hint usage
 function useHint() {
   if (!hintUsed) {
