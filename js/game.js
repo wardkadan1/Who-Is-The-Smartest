@@ -163,6 +163,8 @@ function resetGame() {
   score = 0;
   currentQuestionIndex = 0;
   hintUsed = false;
+  deleted=0;
+  fiftyHintUsed=false;
 }
 
 // Timers for game and questions
