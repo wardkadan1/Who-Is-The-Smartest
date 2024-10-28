@@ -158,7 +158,7 @@ function startTimers() {
   }, 1000);
 }
 
-// window.onload = startGame;
+window.onload = startGame;
 
 
 
