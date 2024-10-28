@@ -79,7 +79,7 @@ function skipQuestion() {
     // Change button color and disable it
     const skipBtn = document.getElementById("skip");
     skipBtn.style.backgroundColor = "grey"; // Change button color to grey
-    skipBtn.disabled = true; // Disable the button
+    skipBtn.style.cursor = "not-allowed"; // Change cursor to not-allowed
 
     clearInterval(questionInterval); // Stop the timer when skipping
     displayMessage("Question skipped!", "You have gained 1 point.");
