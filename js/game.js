@@ -108,18 +108,49 @@ function displayMessage(title, message) {
 
 //event click for hintBtn
 const hintBtn=document.getElementById('hintBtn');
-hintBtn.addEventListener('click',function(){
+hintBtn.addEventListener('click',function(){ 
   useHint();
+  hintBtn.classList.add('used-hint');
 })
 // Handle hint usage
 function useHint() {
   if (!hintUsed) {
     hintUsed = true;
-    displayMessage("Hint: " + questions[currentQuestionIndex].hint, "blue");
+    displayMessage("Hint: " + questions[currentQuestionIndex].hint,"");
   } else {
     displayMessage("You've already used your hint!", "gray");
   }
 }
+
+//fiftyHint
+let deleted=0;
+let fiftyHintUsed=false;
+
+function applyFiftyHint(){
+  if (!fiftyHintUsed) {   
+     questions[currentQuestionIndex].answers.forEach((ans,index) => {
+      console.log(ans);
+     const answerElement = document.getElementById(`ans${index + 1}`);
+     
+     // Check if the answer is incorrect and that we haven't deleted 2 already
+     if(ans !== questions.rightAnswer && deleted < 2){
+      answerElement.style.textDecoration = 'line-through';
+      // answerElement.classList.add('used-fifty');
+      deleted++;
+     }
+    });
+  fiftyHintUsed = true; // Mark the hint as used
+} else{
+  displayMessage("You've already used this hint!");
+}
+}
+const fiftyFifty=document.getElementById('fiftyFifty');
+fiftyFifty.addEventListener('click',()=>{
+  console.log( questions[currentQuestionIndex].answers);
+  applyFiftyHint()  
+  fiftyFifty.classList.add('used-fifty-hint'); 
+})
+
 
 // End the game and display result
 function endGame(message) {
@@ -164,6 +195,3 @@ function startTimers() {
 }
 
 window.onload = startGame;
-
-
-

@@ -240,3 +240,11 @@ body {
 #ans4 {
   text-align: center;
 }
+.used-hint {
+  background-color: gray;
+  pointer-events: none; 
+}
+.used-fifty-hint{
+  background-color: gray;
+  pointer-events: none; 
+}
