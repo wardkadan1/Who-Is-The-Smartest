@@ -219,6 +219,22 @@ body {
   }
 }
 
+#answersContainer .correctAnswer {
+  background: #c0e4c0;
+  &:hover {
+    background: #c0e4c0;
+    color: black;
+  }
+}
+
+#answersContainer .wrongAnswer {
+  background: #ff9b9b;
+  &:hover {
+    background: #ff9b9b;
+    color: black;
+  }
+}
+
 #message {
   width: 100%;
   color: black;
