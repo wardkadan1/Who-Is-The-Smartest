@@ -92,8 +92,7 @@ function handleAnswer(question, selectedAnswer) {
 
     // Check if lives are exhausted
     if (lives === 0) {
-      // endGame(); // cards pop up related to the user score
-      checkNumber();
+      // Ward you will need to implement your function here!
     } else {
       setTimeout(() => {
         nextQuestion();
@@ -130,10 +129,7 @@ function nextQuestion() {
     // Load the next question
     loadQuestion(questions[currentQuestionIndex]);
   } else {
-    // End the game if there are no more questions
-    // endGame(
-    //   `Congratulations! You finished the game with a score of ${score}/${maxQuestions}.`
-    // ); // cards pop up related to the user
+    // Ward you will need to implement your function here!
   }
 }
 
@@ -152,12 +148,6 @@ function useHint() {
     displayMessage("You've already used your hint!", "gray");
   }
 }
-
-// End the game and display result
-// function endGame(message) {
-//   alert(message);
-//   // resetGame();
-// }
 
 // Reset game variables
 function resetGame() {
@@ -182,82 +172,15 @@ function startTimers() {
       }
     } else {
       lives--;
-      displayMessage("Time's up for this question!", "orange");
-
       if (lives === 0) {
         clearInterval(questionInterval); // Stop the question timer if lives are over
-        // endGame("Game Over! You lost all lives.");
+        // Ward you will need to implement your function here!
       } else {
         questionTimer = 60; // Reset timer for the next question
         nextQuestion();
       }
     }
   }, 1000);
-}
-
-const gameOver = document.querySelector(".gameOver");
-const usernameTitle = document.querySelector("#usernameTitle");
-const usernameSpan = document.querySelector("#usernameTitle span");
-const gameOverText = document.querySelector("#gameOverText");
-const gameOverTextTwo = document.querySelector("#gameOverTextTwo");
-const input = document.getElementById("name");
-
-function checkNumber() {
-  gameOver.style.display = "flex";
-  const username = localStorage.getItem("username");
-  usernameSpan.textContent = username || "Guest";
-  gameOverTextTwo.textContent = `${score}/10`;
-
-  switch (score) {
-    case 1:
-      usernameTitle.textContent = "Tough start,";
-      gameOverText.textContent = "Better luck next time. Keep learning!";
-      break;
-    case 2:
-      usernameTitle.textContent = "Nice try,";
-      gameOverText.textContent = "There’s still more to discover. Keep going!";
-      break;
-    case 3:
-      usernameTitle.textContent = "Good effort,";
-      gameOverText.textContent =
-        "Keep challenging yourself, and you’ll get better";
-      break;
-    case 4:
-      usernameTitle.textContent = "Not bad,";
-      gameOverText.textContent = "Keep improving and try again!";
-      break;
-    case 5:
-      usernameTitle.textContent = "You're halfway there,";
-      gameOverText.textContent =
-        "but not enough to win. Better luck next time!";
-      break;
-    case 6:
-      usernameTitle.textContent = "So close,";
-      gameOverText.textContent = "Just one more right answer would’ve done it.";
-      break;
-    case 7:
-      usernameTitle.textContent = "Great job,";
-      gameOverText.textContent = "You win with 7 correct answers. Well done!";
-      break;
-    case 8:
-      usernameTitle.textContent = "Amazing,";
-      gameOverText.textContent = "You win with 8 correct answers. Nice!";
-      break;
-    case 9:
-      usernameTitle.textContent = "Excellent,";
-      gameOverText.textContent =
-        "You win with 9 correct answers. Almost perfect!";
-      break;
-    case 10:
-      usernameTitle.textContent = "Congratulations,";
-      gameOverText.textContent = "You Are The Smartest!";
-      gameOverTextTwo.textContent = "You’ve mastered every question perfectly!";
-      break;
-
-    default:
-      usernameTitle.textContent = "No Luck!";
-      gameOverText.textContent = "Better luck next time!";
-  }
 }
 
 window.onload = startGame;
