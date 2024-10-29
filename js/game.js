@@ -5,8 +5,9 @@ let currentQuestionIndex = 0;
 let hintUsed = false;
 let username = null;
 const maxQuestions = 10;
-
-// Store fetched and shuffled questions here
+let questionTimer;
+let questionInterval;
+let skipUsed = false;
 let questions = [];
 
 // Fetch questions from MockAPI and shuffle them
@@ -21,24 +22,25 @@ async function fetchQuestions() {
 
 // Initialize game
 async function startGame() {
-  resetGame(); // Reset game state before starting
+  resetGame();
   await fetchQuestions();
-  loadQuestion(questions[currentQuestionIndex]);
   startTimers();
+  loadQuestion(questions[currentQuestionIndex]);
+  document.getElementById("skip").onclick = skipQuestion;
 }
 
 // Load current question and display on UI
 function loadQuestion(item) {
   document.getElementById("questionText").innerText = item.question;
-
-  // Shuffle and display answer options
-  const questionAnswers = [...item.answers];
-
-  questionAnswers.forEach((answer, index) => {
+  document.getElementById("categoryText").innerText = item.category;
+  const shuffledAnswers = [...item.answers];
+  shuffledAnswers.forEach((answer, index) => {
     const answerBtn = document.getElementById(`ans${index + 1}`);
     answerBtn.innerText = answer;
     answerBtn.onclick = () => handleAnswer(item, answer);
   });
+  const skipBtn = document.getElementById("skip");
+  skipBtn.disabled = false;
 }
 
 function disableAnswerButtons() {
@@ -117,34 +119,39 @@ function handleAnswer(question, selectedAnswer) {
     }
   }
 }
-
-// Move to the next question
-function nextQuestion() {
-  // Reset question timer to 60 seconds
-  questionTimer = 60;
-  const timerDisplay = document.getElementById("timer");
-  if (timerDisplay) {
-    timerDisplay.innerText = questionTimer; // Update the displayed timer immediately
+// Skip the current question
+function skipQuestion() {
+  if (!skipUsed) {
+    score++;
+    skipUsed = true;
+    const skipBtn = document.getElementById("skip");
+    skipBtn.style.backgroundColor = "grey";
+    skipBtn.style.pointerEvents = "none";
+    clearInterval(questionInterval);
+    nextQuestion();
   }
+}
 
+// Move to the next question and reset timer
+function nextQuestion() {
+  clearInterval(questionInterval);
+  startTimers(); // Reset and start the timer immediately
   currentQuestionIndex++;
-
-  // Check if there are more questions
   if (
     currentQuestionIndex < maxQuestions &&
     currentQuestionIndex < questions.length
   ) {
-    // Update the question number display
-    const quesNumText = document.getElementById("QuesNumText");
-    if (quesNumText) {
-      quesNumText.innerText = `${currentQuestionIndex + 1}/${maxQuestions}`;
-    }
-
-    // Load the next question
+    updateQuestionNumber();
     loadQuestion(questions[currentQuestionIndex]);
   } else {
     endGame();
   }
+}
+
+// Update displayed question number
+function updateQuestionNumber() {
+  const quesNumText = document.getElementById("QuesNumText");
+  quesNumText.innerText = `${currentQuestionIndex + 1}/${maxQuestions}`;
 }
 
 // Display messages for correct/incorrect answers
@@ -153,44 +160,41 @@ function displayMessage(title, message) {
   messageBox.innerHTML = `<span id='messageTitle'>${title}</span> ${message}`; // Set the message text
 }
 
-// Handle hint usage
-function useHint() {
-  if (!hintUsed) {
-    hintUsed = true;
-    displayMessage("Hint: " + questions[currentQuestionIndex].hint, "blue");
-  } else {
-    displayMessage("You've already used your hint!", "gray");
+// Update lives display
+function updateLivesDisplay() {
+  const livesDisplay = document.querySelector(".numOfLives");
+  if (livesDisplay) {
+    livesDisplay.innerText = lives;
   }
 }
 
 // Reset game variables
 function resetGame() {
+  clearInterval(questionInterval);
   lives = 3;
   score = 0;
   currentQuestionIndex = 0;
   hintUsed = false;
+  skipUsed = false;
 }
 
-// Timers for game and questions
+// Start a fresh timer for each question
 function startTimers() {
-  let questionTimer = 60; // 1 minute per question
-
-  // Question timer countdown
-  const questionInterval = setInterval(() => {
-    const timerDisplay = document.getElementById("timer");
-
+  questionTimer = 60;
+  const timerDisplay = document.getElementById("timer");
+  timerDisplay.innerText = questionTimer;
+  questionInterval = setInterval(() => {
     if (questionTimer > 0) {
       questionTimer--;
-      if (timerDisplay) {
-        timerDisplay.innerText = questionTimer;
-      }
+      timerDisplay.innerText = questionTimer;
     } else {
+      clearInterval(questionInterval);
       lives--;
+      displayMessage("Time's up for this question!", "orange");
+      updateLivesDisplay();
       if (lives === 0) {
-        clearInterval(questionInterval); // Stop the question timer if lives are over
-        endGame();
+        endGame("Game Over! You lost all lives.");
       } else {
-        questionTimer = 60; // Reset timer for the next question
         nextQuestion();
       }
     }
