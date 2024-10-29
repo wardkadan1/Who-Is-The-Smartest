@@ -117,10 +117,6 @@ function handleAnswer(question, selectedAnswer) {
         messageBox.style.display = "none";
       }, 3000);
     }
-    // setTimeout(() => {
-    //   document.getElementById("messageText").innerText = "";
-    //   nextQuestion();
-    // }, 3000);
   }
 }
 // Skip the current question
@@ -132,10 +128,7 @@ function skipQuestion() {
     skipBtn.style.backgroundColor = "grey";
     skipBtn.style.pointerEvents = "none";
     clearInterval(questionInterval);
-    displayMessage("Question skipped!", "You have gained 1 point.");
-    setTimeout(() => {
-      nextQuestion();
-    }, 3000);
+    nextQuestion();
   }
 }
 
