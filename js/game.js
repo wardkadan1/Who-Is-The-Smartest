@@ -78,22 +78,23 @@ function handleAnswer(question, selectedAnswer) {
     const selectedRightAnswer = document.getElementById(
       `ans${rightAnswerIndex}`
     );
-    selectedRightAnswer.style.backgroundColor = "#C0E4C0";
+    selectedRightAnswer.classList.add("correctAnswer");
+    console.log(selectedRightAnswer);
     setTimeout(() => {
       enableAnswerButtons(question);
       nextQuestion();
-      selectedRightAnswer.style.backgroundColor = "#FFFFFF";
+      selectedRightAnswer.classList.remove("correctAnswer");
     }, 1000);
   } else {
     lives--;
     const selectedWrongAnswer = document.getElementById(
       `ans${selectedAnswerIndex}`
     );
-    selectedWrongAnswer.style.backgroundColor = "#FF9B9B";
+    selectedWrongAnswer.classList.add("wrongAnswer");
     const selectedRightAnswer = document.getElementById(
       `ans${rightAnswerIndex}`
     );
-    selectedRightAnswer.style.backgroundColor = "#C0E4C0";
+    selectedRightAnswer.classList.add("correctAnswer");
     displayMessage("Correct Answer: ", question.explanation);
 
     // Update the displayed number of lives
@@ -109,8 +110,8 @@ function handleAnswer(question, selectedAnswer) {
       setTimeout(() => {
         enableAnswerButtons(question);
         nextQuestion();
-        selectedRightAnswer.style.backgroundColor = "#FFFFFF";
-        selectedWrongAnswer.style.backgroundColor = "#FFFFFF";
+        selectedRightAnswer.classList.remove("correctAnswer");
+        selectedWrongAnswer.classList.remove("wrongAnswer");
         messageBox.style.display = "none";
       }, 3000);
     }
