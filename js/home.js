@@ -35,6 +35,7 @@ newGameBtn1.addEventListener("click", () => {
     error.style.color = "red";
   } else {
     error.style.display = "none";
+    localStorage.setItem("username", input.value);
     window.location.href = "gamePage.html";
   }
 });
