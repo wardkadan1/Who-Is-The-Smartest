@@ -75,6 +75,7 @@ function handleAnswer(question, selectedAnswer) {
   }
 
   disableAnswerButtons();
+
   if (isCorrect) {
     score++;
     const selectedRightAnswer = document.getElementById(
@@ -158,6 +159,7 @@ function updateQuestionNumber() {
 function displayMessage(title, message) {
   const messageBox = document.getElementById("messageText"); // Get the <p> element
   messageBox.innerHTML = `<span id='messageTitle'>${title}</span> ${message}`; // Set the message text
+  messageBox.style.display = "block";
 }
 
 // Update lives display
@@ -190,10 +192,9 @@ function startTimers() {
     } else {
       clearInterval(questionInterval);
       lives--;
-      displayMessage("Time's up for this question!", "orange");
       updateLivesDisplay();
       if (lives === 0) {
-        endGame("Game Over! You lost all lives.");
+        endGame();
       } else {
         nextQuestion();
       }
