@@ -42,9 +42,11 @@ function loadQuestion(item) {
 // Handle answer selection
 function handleAnswer(question, selectedAnswer) {
     const isCorrect = selectedAnswer === question.rightAnswer;
+    console.log(isCorrect);
     clearInterval(questionInterval); 
     if (isCorrect) {
         score++;
+        console.log(score);
         displayMessage("Correct answer:", question.explanation);
     } else {
         lives--;
