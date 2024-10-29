@@ -41,19 +41,29 @@ function loadQuestion(item) {
   });
 }
 
-// Handle answer selection
+function disableAnswerButtons() {
+  const answerButtons = document.querySelectorAll(".answer-button");
+  for (let i = 0; i < answerButtons.length; i++) {
+    answerButtons[i].onclick = null;
+  }
+}
+
+function enableAnswerButtons(question) {
+  const answerButtons = document.querySelectorAll(".answer-button");
+  for (let i = 0; i < answerButtons.length; i++) {
+    answerButtons[i].onclick = () =>
+      handleAnswer(question, answerButtons[i].textContent);
+  }
+}
+
 function handleAnswer(question, selectedAnswer) {
   const isCorrect = selectedAnswer === question.rightAnswer;
   const messageBox = document.getElementById("messageText");
-
   let rightAnswerIndex = 0;
   let selectedAnswerIndex = 0;
 
   for (let i = 0; i < question.answers.length; i++) {
-    if (question.answers[i] === question.rightAnswer) {
-      rightAnswerIndex = i + 1;
-    }
-
+    if (question.answers[i] === question.rightAnswer) rightAnswerIndex = i + 1;
     if (
       question.answers[i] === selectedAnswer &&
       question.answers[i] !== question.rightAnswer
@@ -62,6 +72,7 @@ function handleAnswer(question, selectedAnswer) {
     }
   }
 
+  disableAnswerButtons();
   if (isCorrect) {
     score++;
     const selectedRightAnswer = document.getElementById(
@@ -69,6 +80,7 @@ function handleAnswer(question, selectedAnswer) {
     );
     selectedRightAnswer.style.backgroundColor = "#C0E4C0";
     setTimeout(() => {
+      enableAnswerButtons(question);
       nextQuestion();
       selectedRightAnswer.style.backgroundColor = "#FFFFFF";
     }, 1000);
@@ -95,6 +107,7 @@ function handleAnswer(question, selectedAnswer) {
       endGame();
     } else {
       setTimeout(() => {
+        enableAnswerButtons(question);
         nextQuestion();
         selectedRightAnswer.style.backgroundColor = "#FFFFFF";
         selectedWrongAnswer.style.backgroundColor = "#FFFFFF";
@@ -185,7 +198,6 @@ function startTimers() {
 
 const gameOver = document.querySelector(".gameOver");
 const usernameTitle = document.querySelector("#usernameTitle");
-const usernameSpan = document.querySelector("#usernameTitle span");
 const gameOverText = document.querySelector("#gameOverText");
 const gameOverTextTwo = document.querySelector("#gameOverTextTwo");
 const input = document.getElementById("name");
