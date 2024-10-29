@@ -92,7 +92,7 @@ function handleAnswer(question, selectedAnswer) {
 
     // Check if lives are exhausted
     if (lives === 0) {
-      // Ward you will need to implement your function here!
+      endGame();
     } else {
       setTimeout(() => {
         nextQuestion();
@@ -129,7 +129,7 @@ function nextQuestion() {
     // Load the next question
     loadQuestion(questions[currentQuestionIndex]);
   } else {
-    // Ward you will need to implement your function here!
+    endGame();
   }
 }
 
@@ -174,13 +174,77 @@ function startTimers() {
       lives--;
       if (lives === 0) {
         clearInterval(questionInterval); // Stop the question timer if lives are over
-        // Ward you will need to implement your function here!
+        endGame();
       } else {
         questionTimer = 60; // Reset timer for the next question
         nextQuestion();
       }
     }
   }, 1000);
+}
+
+const gameOver = document.querySelector(".gameOver");
+const usernameTitle = document.querySelector("#usernameTitle");
+const usernameSpan = document.querySelector("#usernameTitle span");
+const gameOverText = document.querySelector("#gameOverText");
+const gameOverTextTwo = document.querySelector("#gameOverTextTwo");
+const input = document.getElementById("name");
+
+function endGame() {
+  gameOver.style.display = "flex";
+  const username = localStorage.getItem("username");
+  gameOverTextTwo.textContent = `${score}/10`;
+
+  switch (score) {
+    case 1:
+      usernameTitle.innerHTML = `Tough start, <strong>${username}</strong>`;
+      gameOverText.textContent = "Better luck next time. Keep learning!";
+      break;
+    case 2:
+      usernameTitle.innerHTML = `Nice try, <strong>${username}</strong>`;
+      gameOverText.textContent = "There's still more to discover. Keep going!";
+      break;
+    case 3:
+      usernameTitle.innerHTML = `Good effort, <strong>${username}</strong>`;
+      gameOverText.textContent =
+        "Keep challenging yourself, and you'll get better";
+      break;
+    case 4:
+      usernameTitle.innerHTML = `Not bad, <strong>${username}</strong>`;
+      gameOverText.textContent = "Keep improving and try again!";
+      break;
+    case 5:
+      usernameTitle.innerHTML = `You're halfway there, <strong>${username}</strong>`;
+      gameOverText.textContent =
+        "but not enough to win. Better luck next time!";
+      break;
+    case 6:
+      usernameTitle.innerHTML = `So close, <strong>${username}</strong>`;
+      gameOverText.textContent = "Just one more right answer would've done it.";
+      break;
+    case 7:
+      usernameTitle.innerHTML = `Great job, <strong>${username}</strong>`;
+      gameOverText.textContent = "You win with 7 correct answers. Well done!";
+      break;
+    case 8:
+      usernameTitle.innerHTML = `Amazing, <strong>${username}</strong>`;
+      gameOverText.textContent = "You win with 8 correct answers. Nice!";
+      break;
+    case 9:
+      usernameTitle.innerHTML = `Excellent, <strong>${username}</strong>`;
+      gameOverText.textContent =
+        "You win with 9 correct answers. Almost perfect!";
+      break;
+    case 10:
+      usernameTitle.innerHTML = `Congratulations, <strong>${username}</strong>`;
+      gameOverText.textContent = "You Are The Smartest!";
+      gameOverTextTwo.textContent = "You've mastered every question perfectly!";
+      break;
+
+    default:
+      usernameTitle.innerHTML = `No Luck!, <strong>${username}</strong>`;
+      gameOverText.textContent = "Better luck next time!";
+  }
 }
 
 window.onload = startGame;
