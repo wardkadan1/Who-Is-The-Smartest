@@ -1,4 +1,7 @@
 // Variables to hold game state
+const fiftyFifty = document.getElementById("fiftyFifty");
+const hintBtn = document.getElementById("hintBtn");
+const skip = document.getElementById("skip");
 let lives = 3;
 let score = 0;
 let currentQuestionIndex = 0;
@@ -26,8 +29,8 @@ async function startGame() {
   resetGame();
   await fetchQuestions();
   startTimers();
+  enableButtons();
   loadQuestion(questions[currentQuestionIndex]);
-  document.getElementById("skip").onclick = skipQuestion;
 }
 
 // Load current question and display on UI
@@ -67,6 +70,26 @@ function enableAnswerButtons(question) {
   }
 }
 
+function disableButtons() {
+  hintBtn.onclick = null;
+  fiftyFifty.onclick = null;
+  skip.onclick = null;
+}
+
+function enableButtons() {
+  fiftyFifty.onclick = () => {
+    applyFiftyHint();
+    fiftyFifty.classList.add("used-fifty-hint");
+  };
+
+  hintBtn.onclick = () => {
+    useHint();
+    hintBtn.classList.add("used-hint");
+  };
+
+  skip.onclick = skipQuestion;
+}
+
 function handleAnswer(question, selectedAnswer) {
   const isCorrect = selectedAnswer === question.rightAnswer;
   const messageBox = document.getElementById("messageText");
@@ -84,6 +107,7 @@ function handleAnswer(question, selectedAnswer) {
   }
 
   disableAnswerButtons();
+  disableButtons();
 
   if (isCorrect) {
     score++;
@@ -94,6 +118,7 @@ function handleAnswer(question, selectedAnswer) {
     console.log(selectedRightAnswer);
     setTimeout(() => {
       enableAnswerButtons(question);
+      enableButtons();
       nextQuestion();
       selectedRightAnswer.classList.remove("correctAnswer");
     }, 1000);
@@ -121,6 +146,7 @@ function handleAnswer(question, selectedAnswer) {
     } else {
       setTimeout(() => {
         enableAnswerButtons(question);
+        enableButtons();
         nextQuestion();
         selectedRightAnswer.classList.remove("correctAnswer");
         selectedWrongAnswer.classList.remove("wrongAnswer");
@@ -129,6 +155,7 @@ function handleAnswer(question, selectedAnswer) {
     }
   }
 }
+
 // Skip the current question
 function skipQuestion() {
   if (!skipUsed) {
@@ -172,12 +199,6 @@ function displayMessage(title, message) {
   messageBox.style.display = "block";
 }
 
-//event click for hintBtn
-const hintBtn = document.getElementById("hintBtn");
-hintBtn.addEventListener("click", function () {
-  useHint();
-  hintBtn.classList.add("used-hint");
-});
 // Handle hint usage
 function useHint() {
   if (!hintUsed) {
@@ -199,12 +220,6 @@ function applyFiftyHint() {
     fiftyHintUsed = true;
   }
 }
-const fiftyFifty = document.getElementById("fiftyFifty");
-fiftyFifty.addEventListener("click", () => {
-  console.log(questions[currentQuestionIndex].answers);
-  applyFiftyHint();
-  fiftyFifty.classList.add("used-fifty-hint");
-});
 
 // Update lives display
 function updateLivesDisplay() {
