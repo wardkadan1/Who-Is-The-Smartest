@@ -9,6 +9,7 @@ let questionTimer;
 let questionInterval;
 let skipUsed = false;
 let questions = [];
+let fiftyHintUsed = false;
 
 // Fetch questions from MockAPI and shuffle them
 async function fetchQuestions() {
@@ -43,10 +44,12 @@ function loadQuestion(item) {
   //removing strikeThrough case user used fiftyHint previous question
   for (let i = 1; i <= item.answers.length; i++) {
     const answerBtn = document.getElementById(`ans${i}`);
-    answerBtn.style.textDecoration = 'none'; 
-  const skipBtn = document.getElementById("skip");
-  skipBtn.disabled = false;
-}
+    answerBtn.style.textDecoration = "none";
+    const skipBtn = document.getElementById("skip");
+    skipBtn.disabled = false;
+  }
+  const messageBox = document.getElementById("messageText"); // Get the <p> element
+  messageBox.style.display = "none";
 }
 
 function disableAnswerButtons() {
@@ -143,6 +146,7 @@ function skipQuestion() {
 function nextQuestion() {
   clearInterval(questionInterval);
   startTimers(); // Reset and start the timer immediately
+
   currentQuestionIndex++;
   if (
     currentQuestionIndex < maxQuestions &&
@@ -169,56 +173,38 @@ function displayMessage(title, message) {
 }
 
 //event click for hintBtn
-const hintBtn=document.getElementById('hintBtn');
-hintBtn.addEventListener('click',function(){ 
+const hintBtn = document.getElementById("hintBtn");
+hintBtn.addEventListener("click", function () {
   useHint();
-  hintBtn.classList.add('used-hint');
-})
+  hintBtn.classList.add("used-hint");
+});
 // Handle hint usage
 function useHint() {
   if (!hintUsed) {
     hintUsed = true;
-    displayMessage("Hint: " + questions[currentQuestionIndex].hint,"");
-  } else {
-    displayMessage("You've already used your hint!", "gray");
+    displayMessage("Hint: ", questions[currentQuestionIndex].hint);
   }
 }
 
-//fiftyHint
-let fiftyHintUsed=false;
-
-function applyFiftyHint(){
-let deleted=0;
-  if (!fiftyHintUsed) {   
-     questions[currentQuestionIndex].answers.forEach((ans,index) => {
-      console.log(ans);
-     const answerElement = document.getElementById(`ans${index + 1}`);
-     
-     // Check if the answer is incorrect and that we haven't deleted 2 already
-     if(ans !== questions.rightAnswer && deleted < 2){
-      answerElement.style.textDecoration = 'line-through';
-      deleted++;
-     }
+function applyFiftyHint() {
+  let deleted = 0;
+  if (!fiftyHintUsed) {
+    questions[currentQuestionIndex].answers.forEach((ans, index) => {
+      const answerElement = document.getElementById(`ans${index + 1}`);
+      if (ans !== questions[currentQuestionIndex].rightAnswer && deleted < 2) {
+        answerElement.style.textDecoration = "line-through";
+        deleted++;
+      }
     });
-  fiftyHintUsed = true; 
-} else{
-  displayMessage("You've already used this hint!");
+    fiftyHintUsed = true;
+  }
 }
-}
-const fiftyFifty=document.getElementById('fiftyFifty');
-fiftyFifty.addEventListener('click',()=>{
-  console.log( questions[currentQuestionIndex].answers);
-  applyFiftyHint()  
-  // fiftyHintUsed = true; 
-  fiftyFifty.classList.add('used-fifty-hint'); 
-})
-
-
-// End the game and display result
-function endGame(message) {
-  alert(message);
-  resetGame();
-}
+const fiftyFifty = document.getElementById("fiftyFifty");
+fiftyFifty.addEventListener("click", () => {
+  console.log(questions[currentQuestionIndex].answers);
+  applyFiftyHint();
+  fiftyFifty.classList.add("used-fifty-hint");
+});
 
 // Update lives display
 function updateLivesDisplay() {
@@ -235,9 +221,13 @@ function resetGame() {
   score = 0;
   currentQuestionIndex = 0;
   hintUsed = false;
-  fiftyHintUsed=false;
+  fiftyHintUsed = false;
   skipUsed = false;
 }
+
+document.getElementById("restartBtn").addEventListener("click", function () {
+  location.reload();
+});
 
 // Start a fresh timer for each question
 function startTimers() {
