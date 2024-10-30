@@ -39,8 +39,14 @@ function loadQuestion(item) {
     answerBtn.innerText = answer;
     answerBtn.onclick = () => handleAnswer(item, answer);
   });
+
+  //removing strikeThrough case user used fiftyHint previous question
+  for (let i = 1; i <= item.answers.length; i++) {
+    const answerBtn = document.getElementById(`ans${i}`);
+    answerBtn.style.textDecoration = 'none'; 
   const skipBtn = document.getElementById("skip");
   skipBtn.disabled = false;
+}
 }
 
 function disableAnswerButtons() {
@@ -162,6 +168,58 @@ function displayMessage(title, message) {
   messageBox.style.display = "block";
 }
 
+//event click for hintBtn
+const hintBtn=document.getElementById('hintBtn');
+hintBtn.addEventListener('click',function(){ 
+  useHint();
+  hintBtn.classList.add('used-hint');
+})
+// Handle hint usage
+function useHint() {
+  if (!hintUsed) {
+    hintUsed = true;
+    displayMessage("Hint: " + questions[currentQuestionIndex].hint,"");
+  } else {
+    displayMessage("You've already used your hint!", "gray");
+  }
+}
+
+//fiftyHint
+let fiftyHintUsed=false;
+
+function applyFiftyHint(){
+let deleted=0;
+  if (!fiftyHintUsed) {   
+     questions[currentQuestionIndex].answers.forEach((ans,index) => {
+      console.log(ans);
+     const answerElement = document.getElementById(`ans${index + 1}`);
+     
+     // Check if the answer is incorrect and that we haven't deleted 2 already
+     if(ans !== questions.rightAnswer && deleted < 2){
+      answerElement.style.textDecoration = 'line-through';
+      deleted++;
+     }
+    });
+  fiftyHintUsed = true; 
+} else{
+  displayMessage("You've already used this hint!");
+}
+}
+const fiftyFifty=document.getElementById('fiftyFifty');
+fiftyFifty.addEventListener('click',()=>{
+  console.log( questions[currentQuestionIndex].answers);
+  applyFiftyHint()  
+  // fiftyHintUsed = true; 
+  fiftyFifty.classList.add('used-fifty-hint'); 
+})
+
+
+// End the game and display result
+function endGame(message) {
+  alert(message);
+  resetGame();
+}
+
 // Update lives display
 function updateLivesDisplay() {
   const livesDisplay = document.querySelector(".numOfLives");
@@ -177,6 +235,7 @@ function resetGame() {
   score = 0;
   currentQuestionIndex = 0;
   hintUsed = false;
+  fiftyHintUsed=false;
   skipUsed = false;
 }
 
