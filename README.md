@@ -93,11 +93,17 @@
   - **Yazan:** Game Page, Background, Logo, Buttons
   - **Orr:** Game Page, Quiz Rectangle
 
-**Sunday & Monday - October 27-28**
+**Sunday & Monday & Tuesday - October 27-29**
 
 - **Members Tasks**
   - **Ghaidaa & Orr:** Check data list, setup questions with 3 lives, add per-question timer, handle question and answer switching
   - **Yazan & Ward:** API connection, answer handling (correct/incorrect display and life deduction), score tracking for winning card
+
+**Wednesday - October 30**
+
+- **Members Tasks**
+  - **Ghaidaa & Orr:** Presentation, Test & Debugging
+  - **Yazan & Ward:** Test & Debugging
 
 ## Development Notes
 

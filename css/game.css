@@ -258,11 +258,11 @@ body {
 }
 .used-hint {
   background-color: gray;
-  pointer-events: none; 
+  pointer-events: none;
 }
-.used-fifty-hint{
+.used-fifty-hint {
   background-color: gray;
-  pointer-events: none; 
+  pointer-events: none;
 }
 
 .gameOver {
@@ -297,6 +297,7 @@ body {
   text-align: center;
   padding: 1rem;
   box-sizing: border-box;
+  box-shadow: 0px 5px 10px 0px rgba(253, 216, 227, 0.5);
 
   h2 {
     font-size: 32px;
