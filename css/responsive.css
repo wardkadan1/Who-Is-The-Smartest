@@ -105,6 +105,10 @@
   #QuestContainer {
     bottom: 175px;
   }
+
+  .gameOverCard {
+    width: 750px;
+  }
 }
 
 /* MD - Medium devices (tablets, 768px and down)*/
@@ -182,6 +186,26 @@
   #timerSection #timer {
     font-size: 28px;
   }
+
+  .gameOverCard {
+    width: 450px;
+    height: 400px;
+    h2 {
+      font-size: 24px;
+    }
+
+    #gameOverText {
+      font-size: 24px;
+    }
+
+    #gameOverTextTwo {
+      font-size: 18px;
+    }
+
+    #gameOverButton {
+      width: 250px;
+    }
+  }
 }
 
 /* SM - Small devices (landscape phones, 576px and down)*/
@@ -225,6 +249,30 @@
   #logo {
     width: 200px;
     height: 200px;
+  }
+
+  .gameOverCard {
+    width: 100%;
+    margin: 0 2rem;
+
+    h2 {
+      font-size: 20px;
+    }
+
+    #gameOverText {
+      font-size: 20px;
+    }
+
+    #gameOverTextTwo {
+      font-size: 16px;
+    }
+
+    a {
+      width: 100%;
+    }
+    #gameOverButton {
+      width: 100%;
+    }
   }
 }
 
