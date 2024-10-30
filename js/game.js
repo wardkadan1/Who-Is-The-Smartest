@@ -13,7 +13,7 @@ let questionInterval;
 let skipUsed = false;
 let questions = [];
 let fiftyHintUsed = false;
-
+const timerDisplay = document.getElementById("timer");
 // Fetch questions from MockAPI and shuffle them
 async function fetchQuestions() {
   const response = await fetch(
@@ -247,7 +247,7 @@ document.getElementById("restartBtn").addEventListener("click", function () {
 // Start a fresh timer for each question
 function startTimers() {
   questionTimer = 60;
-  const timerDisplay = document.getElementById("timer");
+
   timerDisplay.innerText = questionTimer;
   questionInterval = setInterval(() => {
     if (questionTimer > 0) {
@@ -276,7 +276,7 @@ function endGame() {
   gameOver.style.display = "flex";
   const username = localStorage.getItem("username");
   gameOverTextTwo.textContent = `${score}/10`;
-
+  clearInterval(questionInterval);
   switch (score) {
     case 1:
       usernameTitle.innerHTML = `Tough start, <strong>${username}</strong>`;
