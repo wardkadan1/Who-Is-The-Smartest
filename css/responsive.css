@@ -233,8 +233,12 @@
   }
 
   /* Gampage Responsive */
+  #QuestContainer {
+    bottom: 100px;
+  }
+
   #ques p {
-    font-size: 24px;
+    font-size: 18px !important;
   }
 
   .circle {
