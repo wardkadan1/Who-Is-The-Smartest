@@ -440,6 +440,9 @@
     width: 110px;
     height: 110px;
   }
+  #homePageLogo {
+    max-width: 300px;
+  }
 }
 
 @media screen and (max-height: 740px) {
