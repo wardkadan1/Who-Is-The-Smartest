@@ -348,3 +348,8 @@ body {
     gap: 8px;
   }
 }
+
+.pointerE {
+  pointer-events: none;
+  opacity: 0.6;
+}

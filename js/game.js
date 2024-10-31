@@ -82,6 +82,11 @@ function enableButtons() {
     fiftyFifty.classList.add("used-fifty-hint");
   };
 
+  const answerButtons = document.querySelectorAll("#answersContainer p");
+  answerButtons.forEach((btn) => {
+    if (btn.classList.contains("pointerE")) btn.classList.remove("pointerE");
+  });
+
   hintBtn.onclick = () => {
     useHint();
     hintBtn.classList.add("used-hint");
@@ -214,6 +219,7 @@ function applyFiftyHint() {
       const answerElement = document.getElementById(`ans${index + 1}`);
       if (ans !== questions[currentQuestionIndex].rightAnswer && deleted < 2) {
         answerElement.style.textDecoration = "line-through";
+        answerElement.classList.add("pointerE");
         deleted++;
       }
     });
